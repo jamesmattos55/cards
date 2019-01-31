@@ -4,7 +4,7 @@ import java.security.SecureRandom;
 import java.util.Comparator;
 import java.util.Random;
 
-public class War {
+public class SimpleWar {
 
   private Deck deck;
   private Random rng;
@@ -12,7 +12,7 @@ public class War {
   private int tally2;
   private Referree referree;
 
-  public War(Random rng) {
+  public SimpleWar(Random rng) {
     this.rng = rng;
     deck = new Deck();
     deck.shuffle(rng);
@@ -34,6 +34,7 @@ public class War {
         for (int i = 0; i < 3; i++) {
           deck.deal();
           deck.deal();
+          System.out.println(" ? : ?");
           pairsDealt++;
         }
       } else if (comparison >0) {
@@ -48,20 +49,40 @@ public class War {
     } while (tied);
   }
 
+  protected Deck getDeck() {
+    return deck;
+  }
+
+  protected Random getRng() {
+    return rng;
+  }
+
+  protected Referree getReferree() {
+    return referree;
+  }
+
+  public int getTally1() {
+    return tally1;
+  }
+
+  public int getTally2() {
+    return tally2;
+  }
+
   public static void main(String[] args) {
-    War war = new War(new SecureRandom());
+    SimpleWar simpleWar = new SimpleWar(new SecureRandom());
     try {
       while (true) {
-        war.play();
+        simpleWar.play();
       }
     } catch (Deck.DeckEmptyException e) {
       // Do Nothing!
       e.printStackTrace();
     } finally {
-      System.out.printf("Player 1: %d; Player 2: %d.%n", war.tally1, war.tally2);
-      if (war.tally1 > war.tally2) {
+      System.out.printf("Player 1: %d; Player 2: %d.%n", simpleWar.tally1, simpleWar.tally2);
+      if (simpleWar.tally1 > simpleWar.tally2) {
         System.out.println("Player 1 wins!");
-      } else if (war.tally1 < war.tally2) {
+      } else if (simpleWar.tally1 < simpleWar.tally2) {
         System.out.println("Player 2 wins!");
       } else {
         System.out.println("Tie!");
