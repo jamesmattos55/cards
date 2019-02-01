@@ -60,7 +60,6 @@ public class Deck {
       discard.add(c);
       return c;
     } catch (IndexOutOfBoundsException e) {
-      e.printStackTrace();
       throw new DeckEmptyException();
     }
   }

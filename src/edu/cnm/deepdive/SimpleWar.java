@@ -10,7 +10,7 @@ public class SimpleWar {
   private Random rng;
   private int tally1;
   private int tally2;
-  private Referree referree;
+  protected Referree referree;
 
   public SimpleWar(Random rng) {
     this.rng = rng;
@@ -90,7 +90,7 @@ public class SimpleWar {
     }
   }
 
-  private static class Referree implements Comparator<Card> {
+  protected static class Referree implements Comparator<Card> {
 
     @Override
     public int compare(Card card1, Card card2) {

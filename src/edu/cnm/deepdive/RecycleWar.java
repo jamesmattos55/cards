@@ -90,8 +90,8 @@ public class RecycleWar extends SimpleWar {
     } catch (GameOverException e) {
       // Do nothing
     } finally {
-      war.setTally1(war.pile1.size());
-      war.setTally2(war.pile2.size());
+//      war.setTally1(war.pile1.size());
+//      war.setTally2(war.pile2.size());
       System.out.printf("Player 1: %d. Player 2: %d.%n", war.getTally1(), war.getTally2());
       if (war.getTally1() > war.getTally2()) {
         System.out.println("Player 1 wins!");
